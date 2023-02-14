@@ -254,7 +254,7 @@ aa: impossible
 
 ### Conclusions
 * All in all, this laboratory work helped me understand more in-depth regular grammars, what a finite automaton is, and how to convert regular grammar to a finite automaton.
-* Moreover, some methods like the "generate_string" method of the Grammar class or the "check_string" method of the Finite_Automaton method can be implemented in numerous ways.
+* Moreover, some methods like the "generate_string" method of the Grammar class or the "check_string" method of the Finite_Automaton class can be implemented in numerous ways.
 * The last, can be used to check if you implemented the "generate_string" method correctly, which basically means that a Finite_Automaton object verifies a Grammar object.
 
 ## References
