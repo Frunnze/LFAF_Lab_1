@@ -213,11 +213,11 @@ For this task, we can use the "graphviz" library. First, we import it, then we c
 
 <div style="display: flex;">
   <figure style="margin-right: 20px;">
-    <img src="NDFA_11.png" alt="The NDFA of my variant" style="width: 100%;">
+    <img src="NDFA_11.png" alt="The NDFA of my variant" style="width: 40%;">
     <figcaption>Figure 1: The NDFA of my variant</figcaption>
   </figure>
   <figure>
-    <img src="DFA_11.png" alt="The DFA of my variant" style="width: 100%;">
+    <img src="DFA_11.png" alt="The DFA of my variant" style="width: 40%;">
     <figcaption>Figure 2: The DFA of my variant</figcaption>
   </figure>
 </div>
