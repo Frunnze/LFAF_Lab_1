@@ -193,7 +193,6 @@ For this task, we can use the "graphviz" library. First, we import it, then we c
         graph.render('finite_automaton', format='png', view=True)
 ```
 
-
 <table style="border-collapse: collapse;">
   <tr>
     <td style="border: none;">
@@ -204,30 +203,12 @@ For this task, we can use the "graphviz" library. First, we import it, then we c
     </td>
     <td style="border: none;">
       <div>
-        <img src="DFA_11.png" alt="The DFA of my variant" style="width:40%;">
+        <img src="DFA_11.png" alt="The DFA of my variant" style="width:42%;">
         <figcaption style="text-align: center;">Figure 2: The DFA of my variant</figcaption>
       </div>
     </td>
   </tr>
 </table>
-
-<div style="display: flex;">
-  <div style="display: flex; flex-direction: column; margin-right: 20px;">
-    <figure>
-      <img src="NDFA_11.png" alt="The NDFA of my variant" style="width: 10%;">
-      <figcaption>Figure 1: The NDFA of my variant</figcaption>
-    </figure>
-  </div>
-  <div style="display: flex; flex-direction: column;">
-    <figure>
-      <img src="DFA_11.png" alt="The DFA of my variant" style="width: 15%;">
-      <figcaption>Figure 2: The DFA of my variant</figcaption>
-    </figure>
-  </div>
-</div>
-
-
-
 
 
 
