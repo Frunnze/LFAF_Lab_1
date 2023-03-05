@@ -210,45 +210,59 @@ For this task, we can use the "graphviz" library. First, we import it, then we c
   </tr>
 </table>
 
-<div style="text-align: center;">
-  <table style="border-collapse: collapse;">
-    <tr>
-      <td style="border: none;">
-        <div>
-          <img src="NDFA_11.png" alt="The NDFA of my variant" style="width:40%;">
-          <figcaption style="text-align: center;">Figure 1: The NDFA of my variant</figcaption>
-        </div>
-      </td>
-      <td style="border: none;">
-        <div>
-          <img src="DFA_11.png" alt="The DFA of my variant" style="width:42%;">
-          <figcaption style="text-align: center;">Figure 2: The DFA of my variant</figcaption>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-
-
 
 ## Conclusions / Screenshots / Results
 ### Results:
-Result 1:
+Result 1: Classification of the grammar from lab. 1 with the "classify_grammar" method.
 ```
-abb
-acbaaaaab
-babaaaacccbb
-aabcbaab
-acbb
+Type 3. Regular Grammar
+```
 
-Testing:
-abb: possible
-acbaaaaab: possible
-babaaaacccbb: possible
-aabcbaab: possible
-acbb: possible
+Result 2: Converted FA to RG
 ```
+V_n =  ['0', '1', '2', '3']
+V_t =  ['a', 'b', 'c']
+S =  0
+P =  {'0': ['a1', 'b2'], '1': ['b2', 'a'], '2': ['c0', 'c']}
+```
+
+Result 3: The type of my FA before and after method "convert_to_DFA()", using method "get_type()" for output.
+```
+NDFA
+DFA
+```
+
+Result 4: Converted NDFA to DFA
+```
+Q =  [('0',), ('1',), ('2',), ('3',), ('0', '3')]
+sigma =  ['a', 'b', 'c']
+delta =  {
+    ('0',): [('a', ('1',)), ('b', ('2',))], 
+    ('1',): [('a', ('3',)), ('b', ('2',))], 
+    ('2',): [('c', ('0', '3'))], 
+    ('0', '3'): [('a', ('1',)), ('b', ('2',))]
+    }
+q0 =  ('0',)
+F =  [('0', '3'), ('3',)]
+```
+
+Result 5: Graphical representation of FAs
+<table style="border-collapse: collapse;">
+  <tr>
+    <td style="border: none;">
+      <div>
+        <img src="NDFA_11.png" alt="The NDFA of my variant" style="width:40%;">
+        <figcaption style="text-align: center;">Figure 1: The NDFA of my variant</figcaption>
+      </div>
+    </td>
+    <td style="border: none;">
+      <div>
+        <img src="DFA_11.png" alt="The DFA of my variant" style="width:42%;">
+        <figcaption style="text-align: center;">Figure 2: The DFA of my variant</figcaption>
+      </div>
+    </td>
+  </tr>
+</table>
 
 
 ### Conclusions

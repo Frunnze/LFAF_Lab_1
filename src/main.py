@@ -28,16 +28,25 @@ delta = {
 
 # Define an FA object.
 FA_11 = FA.Finite_Automaton(Q, sigma, delta, '0', F)
-#FA_11.show_graphically()
+FA_11.show_graphically()
 
 # Convert FA to RG.
 RG = FA_11.FA_to_RG()
-print(RG.classify_grammar())
+print('\n')
+print("V_n = ", RG.V_n)
+print("V_t = ", RG.V_t)
+print("S = ", RG.S)
+print("P = ", RG.P, '\n')
 
 # Find the type of the given FA.
 print(FA_11.get_type())
 
 # Convert the NDFA to DFA.
 FA_11.convert_to_DFA()
-print(FA_11.get_type())
-FA_11.show_graphically()
+print(FA_11.get_type(), "\n")
+
+print("Q = ", FA_11.Q)
+print("sigma = ", FA_11.sigma)
+print("delta = ", FA_11.delta)
+print("q0 = ", FA_11.q0)
+print("F = ", FA_11.F)
