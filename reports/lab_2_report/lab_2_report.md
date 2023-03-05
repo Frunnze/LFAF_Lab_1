@@ -193,8 +193,8 @@ For this task, we can use the "graphviz" library. First, we import it, then we c
         graph.render('finite_automaton', format='png', view=True)
 ```
 <div style="display:flex;">
-  <img src="NDFA_11.png" alt="The NDFA of my variant" style="margin-right:10px;width:50%;">
-  <img src="DFA_11.png" alt="The DFA of my variant" style="width:50%;">
+  <img src="NDFA_11.png" alt="The NDFA of my variant" style="margin-right:10px;width:40%;">
+  <img src="DFA_11.png" alt="The DFA of my variant" style="width:40%;">
 </div>
 
 ## Conclusions / Screenshots / Results
