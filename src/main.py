@@ -1,6 +1,7 @@
 import grammar
+import finite_automaton as FA
 
-# Write the grammar values.
+# Write the grammar values (variant 11 from lab 1).
 V_n = ['S', 'B', 'D']
 V_t = ['a', 'b', 'c']
 P = {
@@ -12,19 +13,31 @@ P = {
 # Define a Grammar object.
 grammar_11 = grammar.Grammar(V_n, V_t, P, 'S')
 
-# Generate 5 strings.
-test_cases = grammar_11.generate_strings()
+# Classify the grammar.
+print(grammar_11.classify_grammar())
 
-# Translate the grammar to FA.
-FA = grammar_11.grammar_to_FA()
+# Write the FA inputs. (variant 11 from lab 2)
+Q = ['0', '1', '2', '3']
+sigma = ['a', 'b', 'c']
+F = '3'
+delta = {
+    '0': [('a', '1'), ('b', '2')], 
+    '1': [('b', '2'), ('a', F)],
+    '2': [('c', '0'), ('c', F)]
+}
 
-# Test the "check_string" methods.
-test_cases.append('aaaffh')
-test_cases.append('aaabbbbbbbbbbb')
-test_cases.append('reredede')
-test_cases.append('aaaaaaaaa')
-test_cases.append('a')
-test_cases.append('aa')
-print('\nTesting:')
-for test in test_cases:
-    print(test + ': ' + FA.check_string_method_1(test))
+# Define an FA object.
+FA_11 = FA.Finite_Automaton(Q, sigma, delta, '0', F)
+#FA_11.show_graphically()
+
+# Convert FA to RG.
+RG = FA_11.FA_to_RG()
+print(RG.classify_grammar())
+
+# Find the type of the given FA.
+print(FA_11.get_type())
+
+# Convert the NDFA to DFA.
+FA_11.convert_to_DFA()
+print(FA_11.get_type())
+FA_11.show_graphically()

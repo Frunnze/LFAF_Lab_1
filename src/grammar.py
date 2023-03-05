@@ -64,6 +64,47 @@ class Grammar:
                     delta[state].append((production[0], production[1]))
                 else:
                     delta[state] = [(production[0], production[1])]
-        
+                    
         # Create an object of the type Finite_Automaton.
         return finite_automaton.Finite_Automaton(Q, sigma, delta, q0, F)
+    
+
+    # Classify the grammar based on Chomsky's hierarchy.
+    def classify_grammar(self):
+        # Determine if it is a Recursively Enumerable Grammar or a Context-Sensitive Grammar.
+        type_0_or_1 = False
+        for key in self.P.keys():
+            # Find if some left-side part of a production has a length > 1.
+            if len(key) != 1:
+                type_0_or_1 = True
+                break
+        if type_0_or_1 == True:
+            for key in self.P.keys():
+                for value in self.P[key]:
+                    # Return type 0 if it has the epsilon in the right-side part of a production.
+                    if value == '':
+                        return 'Type 0. Recursively Enumerable Grammar'
+            # Return type 1 if it doesn't have the epsilon.
+            return 'Type 1. Context-Sensitive Grammar'
+
+        # Determine if it is a Context-Free Grammar or Regular Grammar.
+        if type_0_or_1 == False:
+            right_RG = left_RG = False
+            for key in self.P.keys():
+                # Look in the right-side part of productions for non-Regular Grammars.
+                for value in self.P[key]:
+                    # Look through each symbol of the right-side part of productions.
+                    for index, symbol in enumerate(value):
+                        # Find if non-terminals are not in their place. That is, either right or left side.
+                        if symbol in self.V_n and len(value) != 1:
+                            if index == 0:
+                                left_RG = True
+                                if right_RG:
+                                    return 'Type 2. Context-Free Grammar'
+                            elif index == len(value) - 1:
+                                right_RG = True
+                                if left_RG:
+                                    return 'Type 2. Context-Free Grammar'
+                            else:
+                                return 'Type 2. Context-Free Grammar'
+            return 'Type 3. Regular Grammar'
