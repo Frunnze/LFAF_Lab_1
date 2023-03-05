@@ -212,14 +212,18 @@ For this task, we can use the "graphviz" library. First, we import it, then we c
 </table>
 
 <div style="display: flex;">
-  <figure style="margin-right: 20px;">
-    <img src="NDFA_11.png" alt="The NDFA of my variant" style="width: 10%;">
-    <figcaption>Figure 1: The NDFA of my variant</figcaption>
-  </figure>
-  <figure>
-    <img src="DFA_11.png" alt="The DFA of my variant" style="width: 10%;">
-    <figcaption>Figure 2: The DFA of my variant</figcaption>
-  </figure>
+  <div style="display: flex; flex-direction: column; margin-right: 20px;">
+    <figure>
+      <img src="NDFA_11.png" alt="The NDFA of my variant" style="width: 10%;">
+      <figcaption>Figure 1: The NDFA of my variant</figcaption>
+    </figure>
+  </div>
+  <div style="display: flex; flex-direction: column;">
+    <figure>
+      <img src="DFA_11.png" alt="The DFA of my variant" style="width: 15%;">
+      <figcaption>Figure 2: The DFA of my variant</figcaption>
+    </figure>
+  </div>
 </div>
 
 
