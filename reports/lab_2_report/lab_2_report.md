@@ -211,6 +211,51 @@ For this task, we can use the "graphviz" library. First, we import it, then we c
 </table>
 
 
+#### The "main" file.
+```
+import grammar
+import finite_automaton as FA
+
+V_n = ['S', 'B', 'D']
+V_t = ['a', 'b', 'c']
+P = {
+    'S': ['aB', 'bB'],
+    'B': ['bD', 'cB', 'aS'],
+    'D': ['b', 'aD']
+}
+grammar_11 = grammar.Grammar(V_n, V_t, P, 'S')
+print(grammar_11.classify_grammar())
+
+Q = ['0', '1', '2', '3']
+sigma = ['a', 'b', 'c']
+F = '3'
+delta = {
+    '0': [('a', '1'), ('b', '2')], 
+    '1': [('b', '2'), ('a', F)],
+    '2': [('c', '0'), ('c', F)]
+}
+FA_11 = FA.Finite_Automaton(Q, sigma, delta, '0', F)
+FA_11.show_graphically()
+
+RG = FA_11.FA_to_RG()
+print('\n')
+print("V_n = ", RG.V_n)
+print("V_t = ", RG.V_t)
+print("S = ", RG.S)
+print("P = ", RG.P, '\n')
+
+print(FA_11.get_type())
+FA_11.convert_to_DFA()
+print(FA_11.get_type(), "\n")
+
+print("Q = ", FA_11.Q)
+print("sigma = ", FA_11.sigma)
+print("delta = ", FA_11.delta)
+print("q0 = ", FA_11.q0)
+print("F = ", FA_11.F)
+```
+
+
 ## Conclusions / Screenshots / Results
 ### Results:
 Result 1: Classification of the grammar from lab. 1 with the "classify_grammar" method.
@@ -218,13 +263,15 @@ Result 1: Classification of the grammar from lab. 1 with the "classify_grammar" 
 Type 3. Regular Grammar
 ```
 
+
 Result 2: Converted FA to RG
 ```
-V_n =  ['0', '1', '2', '3']
-V_t =  ['a', 'b', 'c']
-S =  0
-P =  {'0': ['a1', 'b2'], '1': ['b2', 'a'], '2': ['c0', 'c']}
+V_n = ['0', '1', '2', '3']
+V_t = ['a', 'b', 'c']
+S = '0'
+P = {'0': ['a1', 'b2'], '1': ['b2', 'a'], '2': ['c0', 'c']}
 ```
+
 
 Result 3: The type of my FA before and after method "convert_to_DFA()", using method "get_type()" for output.
 ```
@@ -232,19 +279,21 @@ NDFA
 DFA
 ```
 
+
 Result 4: Converted NDFA to DFA
 ```
-Q =  [('0',), ('1',), ('2',), ('3',), ('0', '3')]
-sigma =  ['a', 'b', 'c']
-delta =  {
+Q = [('0',), ('1',), ('2',), ('3',), ('0', '3')]
+sigma = ['a', 'b', 'c']
+delta = {
     ('0',): [('a', ('1',)), ('b', ('2',))], 
     ('1',): [('a', ('3',)), ('b', ('2',))], 
     ('2',): [('c', ('0', '3'))], 
     ('0', '3'): [('a', ('1',)), ('b', ('2',))]
     }
-q0 =  ('0',)
-F =  [('0', '3'), ('3',)]
+q0 = ('0',)
+F = [('0', '3'), ('3',)]
 ```
+
 
 Result 5: Graphical representation of FAs
 <table style="border-collapse: collapse;">
@@ -252,13 +301,13 @@ Result 5: Graphical representation of FAs
     <td style="border: none;">
       <div>
         <img src="NDFA_11.png" alt="The NDFA of my variant" style="width:40%;">
-        <figcaption style="text-align: center;">Figure 1: The NDFA of my variant</figcaption>
+        <figcaption style="text-align: center;">Figure 1: The NDFA of variant 11</figcaption>
       </div>
     </td>
     <td style="border: none;">
       <div>
         <img src="DFA_11.png" alt="The DFA of my variant" style="width:42%;">
-        <figcaption style="text-align: center;">Figure 2: The DFA of my variant</figcaption>
+        <figcaption style="text-align: center;">Figure 2: The DFA of variant 11</figcaption>
       </div>
     </td>
   </tr>
@@ -266,7 +315,11 @@ Result 5: Graphical representation of FAs
 
 
 ### Conclusions
-* 
+* The classification of the grammars can be easily done by identifying the criteria for each grammar.
+* The conversion of a FA to an RG can be done mostly by attributing.
+* The conversion of an NDFA to a DFA can be tricky, however, if you use the analytical algorithm this can be done in a nested "for" loop.
+* In order to represent the FAs, we can choose one of the libraries like "graphviz" that allow a very intuitive construction of a graph.
+* All in all, an automaton seems to be an important and useful concept.
 
 ## References
 * Cojuhari I., Duca L., & Fiodorov I. Formal Languages and Finite Automata Guide for practical lessons. Technical University of Moldova
