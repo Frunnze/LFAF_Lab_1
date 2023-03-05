@@ -8,30 +8,34 @@
 
 ## Theory
 Definitions:
-* Automaton - an abstract, or in other words, imaginary computational device, which can be used for describing systems that have a finite amount of possible states and transitions
-* Where we can use an automaton?:
-- Modeling and simulation
-- Language recognition
-- Compiler design
-- Verification of systems
-* Chomsky hierarchy:
-- Type 0. Recursively Enumerable Grammar
-<br/>You don't have restrictions on productions.
-- Type 1. Context-Sensitive Grammars
-<br/>On the right-side part of a production there cannot be an empty string (epsilon).
-- Type 2. Context-Free Grammar
-<br/>On the left-side part of a production there can be just one non-terminal symbol.
-- Type 3. Regular Grammar
-<br/>On the left-side part of a production there can be just one non-terminal symbol. Moreover, there can be at most one non-terminal on the right side and all of them have to be either on the right or left margin.
+* Automaton - an abstract, or in other words, imaginary computational device, which can be used for describing systems that have a finite amount of possible states and transitions.
 * Grammar - an entity defined by four elements: the set of non-terminal symbols, the set of terminal symbols, the start symbol, and the set of production rules.
 * Finite automaton - an automaton with a finite amount of memory, that is, it has a limited amount of states and transitions. In addition, like a grammar, it is constituted of several elements: the finite set of states, an alphabet, a transition function, the initial state, and a set of final states.
 * Deterministic finite automaton - a finite automaton that can go with the same transition at most to one state.
 * Non-deterministic finite automaton - a finite automaton that can go with the same transition to multiple states.
+
+* Where we can use an automaton?:
+<br/>Modeling and simulation
+<br/>Language recognition
+<br/>Compiler design
+<br/>Verification of systems
+
+* Chomsky hierarchy:
+<br/>Type 0. Recursively Enumerable Grammar
+<br/>You don't have restrictions on productions.
+<br/>Type 1. Context-Sensitive Grammars
+<br/>On the right-side part of a production there cannot be an empty string (epsilon).
+<br/>Type 2. Context-Free Grammar
+<br/>On the left-side part of a production there can be just one non-terminal symbol.
+<br/>Type 3. Regular Grammar
+<br/>On the left-side part of a production there can be just one non-terminal symbol. Moreover, there can be at most one non-terminal on the right side and all of them have to be either on the right or left margin.
+
 * Conversion of a finite automaton to a regular grammar:
 <br/>1. Equalize the set of non-terminal symbols with the set of states.
 <br/>2. Equalize the set of terminal symbols with the set of transitions.
 <br/>3. Initialize the starting state (usually the q0 state).
 <br/>4. Create the production set by eliminating the final state from the delta set, and giving each production the corresponding form for the regular grammar.
+
 * Conversion of an NDFA to a DFA:
 <br/>1. Create the new set of states, and initialize it with the starting state.
 <br/>2. Look through the transitions of the starting state.
@@ -188,8 +192,10 @@ For this task, we can use the "graphviz" library. First, we import it, then we c
 
         graph.render('finite_automaton', format='png', view=True)
 ```
-<img src="NDFA_11.png" alt="The NDFA of my variant">
-<img src="DFA_11.png" alt="The DFA of my variant">
+<div style="display:flex;">
+  <img src="NDFA_11.png" alt="The NDFA of my variant" style="margin-right:10px;width:50%;">
+  <img src="DFA_11.png" alt="The DFA of my variant" style="width:50%;">
+</div>
 
 ## Conclusions / Screenshots / Results
 ### Results:
