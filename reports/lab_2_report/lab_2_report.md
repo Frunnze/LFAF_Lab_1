@@ -194,12 +194,12 @@ For this task, we can use the "graphviz" library. First, we import it, then we c
 ```
 
 <figure>
-  <img src="NDFA_11.png" style="margin-right:100px;width:20%;">
+  <img src="NDFA_11.png" style="margin-right:60px;width:20%;">
   <figcaption>Figure 1: The NDFA of my variant</figcaption>
 </figure>
 
 <figure>
-  <img src="DFA_11.png" style="width:30%;">
+  <img src="DFA_11.png" style="width:25%;">
   <figcaption>Figure 2: The DFA of my variant</figcaption>
 </figure>
 
