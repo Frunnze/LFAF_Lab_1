@@ -301,13 +301,13 @@ Result 5: Graphical representation of FAs
     <td style="border: none;">
       <div>
         <img src="NDFA_11.png" alt="The NDFA of my variant" style="width:40%;">
-        <figcaption style="text-align: center;">Figure 1: The NDFA of variant 11</figcaption>
+        <figcaption style="text-align: center;">The NDFA of variant 11</figcaption>
       </div>
     </td>
     <td style="border: none;">
       <div>
         <img src="DFA_11.png" alt="The DFA of my variant" style="width:42%;">
-        <figcaption style="text-align: center;">Figure 2: The DFA of variant 11</figcaption>
+        <figcaption style="text-align: center;">The DFA of variant 11</figcaption>
       </div>
     </td>
   </tr>
