@@ -142,7 +142,8 @@ Also, we can identify separator tokens. If the current char is in '()[]{},.;:', 
                 tokens.append(('SEPARATOR', self.program[c]))
                 c += 1
 ```
-<br/><br/>
+
+<br/>
 Lastly, if the current char is unknown by the lexer, then the token name in the token tuple is going to be the ASCII value, and the lexeme is going to be the unknown char alone.
 ``` 
             else:
@@ -358,7 +359,7 @@ Output:
 ### Conclusions
 * Lexer is an indispensable part of the compiler or interpreter, as it has to send the tokens to the parser, which builds a syntax tree from the given tokens.
 * To build a Lexer you need the tokens or in other words, the categories of symbols or combinations of symbols that you might find in the given sequence of characters.
-* You can create a "get_tokens()" method in many various ways. One way is to go through each char of the given sequence and analyze where it belongs by creating cases for each token that you have identified.
+* You can create a "get_tokens()" method in various ways. One way is to go through each char of the given sequence and analyze where it belongs by creating cases for each token that you have identified.
 
 ## References
 * "Kaleidoscope Introduction and the Lexer." LLVM Tutorial: https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/LangImpl01.html
