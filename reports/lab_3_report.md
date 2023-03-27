@@ -2,6 +2,7 @@
 
 ### Course: Formal Languages & Finite Automata
 ### Author: Frunze Vladislav
+### Group: FAF-212
 
 ----
 
