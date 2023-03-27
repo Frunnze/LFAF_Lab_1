@@ -373,5 +373,5 @@ Output:
 * You can create a "get_tokens()" method in various ways. One way is to go through each char of the given sequence and analyze where it belongs by creating cases for each token that you have identified.
 
 ## References
-* "Kaleidoscope Introduction and the Lexer." LLVM Tutorial: https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/LangImpl01.html
-* "Lexical analysis." Wikipedia: https://en.wikipedia.org/wiki/Lexical_analysis
+1. "Kaleidoscope Introduction and the Lexer." LLVM Tutorial: https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/LangImpl01.html
+2. "Lexical analysis." Wikipedia: https://en.wikipedia.org/wiki/Lexical_analysis
