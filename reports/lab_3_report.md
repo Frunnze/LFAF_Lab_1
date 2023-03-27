@@ -21,7 +21,7 @@ Definitions:
 
 ## Implementation description:
 The lexer was written in Python for Python programming language. The class "Lexer" has just the constructor and one method called "get_tokens()". In the following sections, I will describe the constructor and the method part by part.
-<br/>
+<br/><br/>
 The tokens that I have identified in the Python programming language:
 - Comment - the line that begins with '#'.
 - Keyword - the list is given in the 'main' file.
@@ -50,13 +50,13 @@ First, we create a "while" loop that would analyze each character from the given
 ```
         while c < len(self.program):
 ```
-<br/>
+<br/><br/>
 Next, we identify and skip the whitespaces in order to get to the lexemes.
 ```
             if self.program[c].isspace():
                 c += 1
 ```
-<br/>
+<br/><br/>
 Further, we check if there is a comment token. Thus, we look if the current char is '#'. If it is, we find the index of the newline symbol '/n' at the end of the comment, and take the whole comment as the value of the token. However, the newline symbol might not be there if it is the end of the file, thus, we could just take the whole comment from the '#' char to the end of the file.
 ```
             elif self.program[c] == '#':
@@ -68,7 +68,7 @@ Further, we check if there is a comment token. Thus, we look if the current char
                     tokens.append(('COMMENT', self.program[c:len(self.program)]))
                     c = len(self.program)
 ```
-<br/>
+<br/><br/>
 Moreover, we seek the keyword or the identifier tokens. We do this if the current char of the loop is a letter or the underscore symbol. Taking into account the rules of Python to create an identifier, we build a string of the digits, letters, or underscores, with the first char a letter or an underscore. Then, we check if the built string is in the list of keywords, which would suggest that it belongs to the keyword token, otherwise to the identifier token.
 ```
             elif self.program[c].isalpha() or self.program[c] == '_':
@@ -81,7 +81,7 @@ Moreover, we seek the keyword or the identifier tokens. We do this if the curren
                 else:
                     tokens.append(('IDENTIFIER', string))
 ```
-<br/>
+<br/><br/>
 Next, if the current char is a digit or a dot and the next char is also a digit then, we identify a number token from the next chars. We also create a boolean variable to not allow more than one dot in a number. If there are more dots combined with digits, then unnecessary dots should be taken as separator tokens.
 ```
             elif self.program[c].isdigit() or (self.program[c] == '.' and self.program[c + 1].isdigit()):
@@ -93,7 +93,7 @@ Next, if the current char is a digit or a dot and the next char is also a digit 
                     c += 1
                 tokens.append(('NUMBER', number))
 ```
-<br/>
+<br/><br/>
 Further, we identify string tokens. If the current char is a quote of either type, we take the whole text between the first quote and the next one of the same type. This string is added with its corresponding quotes in the token value cell of the tuple.
 ``` 
             elif self.program[c] == "'" or self.program[c] == '"':
@@ -105,7 +105,7 @@ Further, we identify string tokens. If the current char is a quote of either typ
                 tokens.append(('STRING', quote + string + quote))
                 c += 1
 ```
-<br/>
+<br/><br/>
 Next, we extract comparison operator tokens. If the current char and the next char belong to the below first list, or if the current char belongs to the below second list then we found a comparison operator token, which we add to the 'tokens' list accordingly with a tuple.
 ``` 
             elif self.program[c:c+2] in ['==', '!=', '<=', '>=']:
@@ -115,7 +115,7 @@ Next, we extract comparison operator tokens. If the current char and the next ch
                 tokens.append(('COMPARISON', self.program[c]))
                 c += 1
 ```
-<br/>
+<br/><br/>
 Moreover, we can identify assignment operator tokens. If the current char and the next char, as an entity, belong to the below first list, or if the current char is '=' then we found an assignment operator token, which we add to the 'tokens' list.
 ``` 
             elif self.program[c:c+2] in ['+=', '-=', '*=', '/=']:
@@ -125,7 +125,7 @@ Moreover, we can identify assignment operator tokens. If the current char and th
                 tokens.append(('ASSIGNMENT', self.program[c]))
                 c += 1
 ```
-<br/>
+<br/><br/>
 Next, we can determine arithmetic operator tokens. If the current char and the next char, as an entity, belong to ['//', '**'], or if the current char is in '+-*/%' then we found an arithmetic operator token, which we add to the 'tokens' list.
 ``` 
             elif self.program[c:c+2] in ['//', '**']:
@@ -135,14 +135,14 @@ Next, we can determine arithmetic operator tokens. If the current char and the n
                 tokens.append(('ARITHMETIC', self.program[c]))
                 c += 1
 ```
-<br/>
+<br/><br/>
 Also, we can identify separator tokens. If the current char is in '()[]{},.;:', then it is a separator char. Thus, we add it to the 'tokens' list.
 ``` 
             elif self.program[c] in '()[]{},.;:':
                 tokens.append(('SEPARATOR', self.program[c]))
                 c += 1
 ```
-<br/>
+<br/><br/>
 Lastly, if the current char is unknown by the lexer, then the token name in the token tuple is going to be the ASCII value, and the lexeme is going to be the unknown char alone.
 ``` 
             else:
