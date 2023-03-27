@@ -50,7 +50,7 @@ First, we create a "while" loop that would analyze each character from the given
 ```
         while c < len(self.program):
 ```
-
+<br/>
 Next, we identify and skip the whitespaces in order to get to the lexemes.
 
 ```
