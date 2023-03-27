@@ -145,6 +145,7 @@ Also, we can identify separator tokens. If the current char is in '()[]{},.;:', 
 
 <br/>
 Lastly, if the current char is unknown by the lexer, then the token name in the token tuple is going to be the ASCII value, and the lexeme is going to be the unknown char alone.
+
 ``` 
             else:
                 tokens.append((ord(self.program[c]), self.program[c]))
