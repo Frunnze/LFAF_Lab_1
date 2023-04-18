@@ -319,7 +319,6 @@ P = {
 * Chomsky Normal Form can simplify the use of a Context-Free Grammar significantly.
 * Every CFG can be converted to an equivalent CNF.
 * CNFs do not have epsilon or unit productions.
-* The CNF method can output different outputs for different implementations, however, the generated strings must be the same.
 * The "to_CNF()" method can accept any CFGs.
 
 ## References
