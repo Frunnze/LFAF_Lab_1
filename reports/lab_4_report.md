@@ -79,7 +79,6 @@ First, we enter a "while" loop which is going to stop only if there are no epsil
                     break
 ```
 
-
 Next, in the same loop, we have to add new productions to offset the epsilon elimination. Thus, we go through each production to find the ones which contain "N_eps" on the right side. If we find such a production, we find all indices where the "N_eps" occurs on the right side, generate all possible combinations of the indices where "N_eps" occurs, and generate all possible productions with or without "N_eps" based on the combinations.
 <br/>
 ```
@@ -144,8 +143,9 @@ First, we add the left-side non-terminals of the productions where the right-sid
                     prod.append(left_side)
                     break
 ```
-<br/>
+
 Second, go through each production. If the right side of the production contains just non-terminals from the productives set, then you add the left side non-terminal to the productives set, if it's not already there. Next, go through the productions dictionary from the beginning, with the updated productives set. This is going to continue until the algorithm gets to the last production.
+<br/>
 ```
         while prod_found:
             prod_found = False
@@ -164,8 +164,9 @@ Second, go through each production. If the right side of the production contains
                     if prod_found:
                         break
 ```
-<br/>
+
 Find the set non-productives = non-terminals - productives, and, finally, eliminate every production where any of the non-productives are found.
+<br/>
 ```
         non_prod = list(set(self.V_n) - set(prod))
         for left_side in self.P.keys():
@@ -182,6 +183,7 @@ Find the set non-productives = non-terminals - productives, and, finally, elimin
 
 #### Method to eliminate inaccessible symbols in a CFG:
 Initialize the access list with the start symbol. Add to the accessibles list every symbol of the right side in the productions where the left side is a non-terminal in the list. Determine the inaccessibles list (terminals + non-terminals - accessibles) and delete them from V_n and V_t lists. Delete the keys of the dictionary that are non-terminals in the inaccessibles list. Eliminate every production where any of the inaccessibles are found.
+
 ```
         acces = [self.S]
         for symbol in acces:
@@ -210,6 +212,7 @@ Initialize the access list with the start symbol. Add to the accessibles list ev
 #### Method to translate a CFG into the Chomsky Normal Form:
 
 Check if the start symbol S appears on the right side of any production. If it does, create a new start symbol S0, and add the production S0 -> S to the productions set. Also, apply the previously prepared methods.
+
 ```
         for left_side in list(self.P.keys()):
             for right_side in self.P[left_side]:
@@ -223,8 +226,9 @@ Check if the start symbol S appears on the right side of any production. If it d
         self.eliminate_non_productive()
         self.eliminate_inaccessibles()
 ```
-<br/>
+
 Go through each production except the ones where the right side is just a terminal. Go through each symbol of the right side of the production. Replace the terminal with a new non-terminal and add the last to the productions set.
+<br/>
 ```
         self.P = {k: [list(prod) for prod in v] for k, v in self.P.items()}
         temp_dict = {k: '' for k in self.V_t}
@@ -244,8 +248,9 @@ Go through each production except the ones where the right side is just a termin
                                 new_NT = temp_dict[s]
                             self.P[left_side][index][i] = new_NT
 ```
-<br/>
+
 Go through the productions dictionary. If the right side has more than 2 non-terminals, leave the first non-terminal but replace the rest with a new non-terminal or a new non-terminal created previously with its first value equal to the rest of the right side. If the last does not exist, add the new non-terminal to the productions dictionary with the value as the replaced part.
+<br/>
 ```
         keys_list = list(self.P.keys())
         x_dict = {}
