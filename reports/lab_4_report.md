@@ -48,6 +48,8 @@
     5. Eliminate every production where any of the inaccessibles are found.
 
 ## Implementation description:
+The below implementations can be found in the "grammar.py" from line 114.
+
 #### My grammar (11).
 ```
         V_n = ['S', 'A', 'B', 'C', 'D']
@@ -278,7 +280,8 @@ Go through the productions dictionary. If the right side has more than 2 non-ter
 
 ## Conclusions / Screenshots / Results
 ### Results:
-Unit tests:
+<b>Unit tests:</b>
+ <br/>
 The main file "main_lab_4.py" contains 16 unit tests. You can access it through the path: "LFAF_Labs/src/main_lab_4.py".
 
 It outputs:
@@ -290,7 +293,7 @@ Ran 16 tests in 0.001s
 OK
 ```
 
-The obtained CNF for my grammar (11):
+<b>The obtained CNF for my grammar (11):</b>
 ```
 V_n = {'S', 'A', 'B', 'X1', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7'}
 V_t = {'a', 'b'}
