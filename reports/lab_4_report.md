@@ -296,6 +296,8 @@ OK
 <b>The CNF for my grammar (11):</b>
 <br/>
 Obtained with the "to_CNF()" method.
+
+Output:
 ```
 V_n = {'S', 'A', 'B', 'X1', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7'}
 V_t = {'a', 'b'}
