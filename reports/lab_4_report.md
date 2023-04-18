@@ -8,7 +8,7 @@
 
 ## Theory:
 * Chomsky Normal Form (CNF) - a simplification of a context-free grammar in which the right-side of each production is either a terminal or 2 non-terminals.
-<br/>
+
 CNF algorithm:
 1. Check if the start symbol S appears on the right side of any production. If it does, create a new start symbol S0, and add the production S0 -> S to the productions set.
 2. Eliminate the epsilon productions.
@@ -16,7 +16,7 @@ CNF algorithm:
 4. Eliminate non-productive non-terminals.
 5. Eliminate inaccessible terminals and non-terminals.
 6. Bring the obtained CFG to the form: A -> BC; C -> a.
-<br/>
+
 * Epsilon production - production in which the right side is the empty string. In this laboratory work, it is denoted as ' '.
 * Algorithm for eliminating epsilon productions:
 1. Find the epsilon production and remove it.
@@ -24,28 +24,28 @@ CNF algorithm:
 3. Derive from the found production all the productions with and without the left-side non-terminal of the removed epsilon production.
 Example: P = {A -> '', B -> AC}, P' = {B -> AC, B -> C}
 4. Repeat 1-3 until there are no epsilon productions.
-<br/>
+
 * Renaming / unit production - production in which the left-side is a non-terminal, and the right-side is also a non-terminal, but different than the left-side one. Example: B -> A.
 * Algorithm for eliminating unit productions:
 1. Find the unit production.
 2. Replace the right-side non-terminal with its own right-side productions, that is, the right-sides where it is on the left-side.
 3. If the left-side of the unit production is also a right-side for the right-side in the unit production, then you remove every production with the right-side in the unit production on the left. Also, you remove the left-side of the unit production that will appear when replacing at step 2. In this way, we eliminate the cycles.
-<br/>
+
 * Non-productives - non-terminals that do not generate a string of just terminals.
 Algorithm for eliminating non-productives:
-1. Add the left-side non-terminals of the productions where the right-side is a terminal to the productives set.
-2. If some or all non-terminals, but only them, in the above productives set are found in a right-side of a production, then you add to the productives set the left non-terminal, and go to the first production.
-3. Repeat step 2 until you get to the last production.
-4. Find the set non-productives = non-terminals - productives.
-5. Eliminate every production where any of the non-productives are found.
-<br/>
+    1. Add the left-side non-terminals of the productions where the right-side is a terminal to the productives set.
+    2. If some or all non-terminals, but only them, in the above productives set are found in a right-side of a production, then you add to the productives set the left non-terminal, and go to the first production.
+    3. Repeat step 2 until you get to the last production.
+    4. Find the set non-productives = non-terminals - productives.
+    5. Eliminate every production where any of the non-productives are found.
+
 * Inaccessibles - terminals or non-terminals which cannot be accessed or found from the start symbol.
 * Algorithm for eliminating inaccessible symbols:
-1. Initialize the accessibles set with the start symbol.
-2. Add to the accessibles set every symbol of the right-side in the productions where the left-side is a non-terminal in the set.
-3. If there appear other non-terminals in the accessibles set, repeat step 2.
-4. Form the inaccessibles = (terminals + non-terminals) - accessibles 
-5. Eliminate every production where any of the inaccessibles are found.
+    1. Initialize the accessibles set with the start symbol.
+    2. Add to the accessibles set every symbol of the right-side in the productions where the left-side is a non-terminal in the set.
+    3. If there appear other non-terminals in the accessibles set, repeat step 2.
+    4. Form the inaccessibles = (terminals + non-terminals) - accessibles 
+    5. Eliminate every production where any of the inaccessibles are found.
 
 ## Implementation description:
 ### My grammar (11).
