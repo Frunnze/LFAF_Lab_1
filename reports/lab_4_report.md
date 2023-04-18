@@ -48,7 +48,7 @@
     5. Eliminate every production where any of the inaccessibles are found.
 
 ## Implementation description:
-### My grammar (11).
+#### My grammar (11).
 ```
         V_n = ['S', 'A', 'B', 'C', 'D']
         V_t = ['a', 'b']
@@ -78,9 +78,9 @@ First, we enter a "while" loop which is going to stop only if there are no epsil
                     del self.P[left_side]
                     break
 ```
-<br/>
-Next, in the same loop, we have to add new productions to offset the epsilon elimination. Thus, we go through each production to find the ones which contain "N_eps" on the right side. If we find such a production, we find all indices where the "N_eps" occurs on the right side, generate all possible combinations of the indices where "N_eps" occurs, and generate all possible productions with or without "N_eps" based on the combinations.
 
+Next, in the same loop, we have to add new productions to offset the epsilon elimination. Thus, we go through each production to find the ones which contain "N_eps" on the right side. If we find such a production, we find all indices where the "N_eps" occurs on the right side, generate all possible combinations of the indices where "N_eps" occurs, and generate all possible productions with or without "N_eps" based on the combinations.
+<br/>
 ```
             if N_eps:
                 copy_P = {k: list(v) for k, v in self.P.items()}
