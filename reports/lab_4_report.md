@@ -10,28 +10,29 @@
 * Chomsky Normal Form (CNF) - a simplification of a context-free grammar in which the right-side of each production is either a terminal or 2 non-terminals.
 
 CNF algorithm:
-1. Check if the start symbol S appears on the right side of any production. If it does, create a new start symbol S0, and add the production S0 -> S to the productions set.
-2. Eliminate the epsilon productions.
-3. Eliminate the renaming/unit productions.
-4. Eliminate non-productive non-terminals.
-5. Eliminate inaccessible terminals and non-terminals.
-6. Bring the obtained CFG to the form: A -> BC; C -> a.
+    1. Check if the start symbol S appears on the right side of any production. If it does, create a new start symbol S0, and add the production S0 -> S to the productions set.
+    2. Eliminate the epsilon productions.
+    3. Eliminate the renaming/unit productions.
+    4. Eliminate non-productive non-terminals.
+    5. Eliminate inaccessible terminals and non-terminals.
+    6. Bring the obtained CFG to the form: A -> BC; C -> a.
 
 * Epsilon production - production in which the right side is the empty string. In this laboratory work, it is denoted as ' '.
 * Algorithm for eliminating epsilon productions:
-1. Find the epsilon production and remove it.
-2. Go through each production and find the productions where the right-side contains the left-side of the removed epsilon production.
-3. Derive from the found production all the productions with and without the left-side non-terminal of the removed epsilon production.
-Example: P = {A -> '', B -> AC}, P' = {B -> AC, B -> C}
-4. Repeat 1-3 until there are no epsilon productions.
+    1. Find the epsilon production and remove it.
+    2. Go through each production and find the productions where the right-side contains the left-side of the removed epsilon production.
+    3. Derive from the found production all the productions with and without the left-side non-terminal of the removed epsilon production.
+    Example: P = {A -> '', B -> AC}, P' = {B -> AC, B -> C}
+    4. Repeat 1-3 until there are no epsilon productions.
 
 * Renaming / unit production - production in which the left-side is a non-terminal, and the right-side is also a non-terminal, but different than the left-side one. Example: B -> A.
 * Algorithm for eliminating unit productions:
-1. Find the unit production.
-2. Replace the right-side non-terminal with its own right-side productions, that is, the right-sides where it is on the left-side.
-3. If the left-side of the unit production is also a right-side for the right-side in the unit production, then you remove every production with the right-side in the unit production on the left. Also, you remove the left-side of the unit production that will appear when replacing at step 2. In this way, we eliminate the cycles.
+    1. Find the unit production.
+    2. Replace the right-side non-terminal with its own right-side productions, that is, the right-sides where it is on the left-side.
+    3. If the left-side of the unit production is also a right-side for the right-side in the unit production, then you remove every production with the right-side in the unit production on the left. Also, you remove the left-side of the unit production that will appear when replacing at step 2. In this way, we eliminate the cycles.
 
 * Non-productives - non-terminals that do not generate a string of just terminals.
+
 Algorithm for eliminating non-productives:
     1. Add the left-side non-terminals of the productions where the right-side is a terminal to the productives set.
     2. If some or all non-terminals, but only them, in the above productives set are found in a right-side of a production, then you add to the productives set the left non-terminal, and go to the first production.
