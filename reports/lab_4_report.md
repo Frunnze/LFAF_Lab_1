@@ -9,7 +9,7 @@
 ## Theory:
 * Chomsky Normal Form (CNF) - a simplification of a context-free grammar in which the right-side of each production is either a terminal or 2 non-terminals.
 
-CNF algorithm:
+* CNF algorithm:
     1. Check if the start symbol S appears on the right side of any production. If it does, create a new start symbol S0, and add the production S0 -> S to the productions set.
     2. Eliminate the epsilon productions.
     3. Eliminate the renaming/unit productions.
@@ -32,8 +32,7 @@ CNF algorithm:
     3. If the left-side of the unit production is also a right-side for the right-side in the unit production, then you remove every production with the right-side in the unit production on the left. Also, you remove the left-side of the unit production that will appear when replacing at step 2. In this way, we eliminate the cycles.
 
 * Non-productives - non-terminals that do not generate a string of just terminals.
-
-Algorithm for eliminating non-productives:
+* Algorithm for eliminating non-productives:
     1. Add the left-side non-terminals of the productions where the right-side is a terminal to the productives set.
     2. If some or all non-terminals, but only them, in the above productives set are found in a right-side of a production, then you add to the productives set the left non-terminal, and go to the first production.
     3. Repeat step 2 until you get to the last production.
