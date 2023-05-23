@@ -45,7 +45,7 @@ AST.AST.create_ast_method_2(python_program)
 
 
 python_program = '''
-total = total + num
+total = + + num
 '''
 
 # Tokenize the Python program using the lexer
