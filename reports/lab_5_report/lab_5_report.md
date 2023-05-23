@@ -1,4 +1,4 @@
-# Laboratory work nr. 5
+# Laboratory work nr. 5: Parser & Building an Abstract Syntax Tree
 
 ### Course: Formal Languages & Finite Automata
 ### Author: Frunze Vladislav
@@ -12,6 +12,13 @@
 * Lexical analysis - the process of categorizing the elements of your string; it would output the tokens like (toke_type, token_value (lexeme));
 * Regular expression - an expression that is used as a searching pattern in a string; in other words, it is a generalization of the elements that you want to find in the string.
 
+
+## Objectives:
+1. To understand what lexical analysis is.
+2. To get familiar with the inner workings of a lexer/scanner/tokenizer.
+3. To implement a sample lexer of Python programming language and to show how it works.
+4. To read references 1 and 2.
+5. To create the report.
 
 
 ## Implementation description:

@@ -13,12 +13,14 @@ Definitions:
 - Token - the category of a lexeme in a sequence of characters. 
 - Lexeme - the delimited entity in a sequence of characters that follows some pre-defined rules.
 
+
 ## Objectives:
-1. To understand what lexical analysis is.
-2. To get familiar with the inner workings of a lexer/scanner/tokenizer.
-3. To implement a sample lexer of Python programming language and to show how it works.
-4. To read references 1 and 2.
-5. To create the report.
+1. Study the given Wikipedia articles.
+2. Create a new Lexer method with "TokenType" and regex.
+3. Implement the necessary data structures for an AST that could be used for the text you have processed in the 3rd lab work.
+4. Implement a simple parser program that could extract the syntactic information from the input text.
+5. Write the report.
+
 
 ## Implementation description:
 The lexer was written in Python for Python programming language. The class "Lexer" has just the constructor and one method called "get_tokens()". In the following sections, I will describe the constructor and the method part by part.
