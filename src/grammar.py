@@ -307,7 +307,7 @@ class Grammar:
         # Create a new start symbol S0 if the start symbol S occurs on some right side.
         for left_side in list(self.P.keys()):
             for right_side in self.P[left_side]:
-                if right_side == self.S:
+                if self.S in right_side:
                     self.S = 'S0'
                     self.V_n.append('S0')
                     self.P['S0'] = ['S']

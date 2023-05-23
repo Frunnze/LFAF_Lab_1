@@ -1,11 +1,18 @@
-class Lexer:
-    def __init__(self, program, keywords):
-        self.program = program
-        self.keywords = keywords
+import re
 
-    # Return the list of tokens.
+class Lexer:
+    def __init__(self, program):
+        self.program = program
+
+    # Return the list of tokens (lab 3).
     def get_tokens(self):
         tokens, c = [], 0
+        keywords = ['and', 'as', 'assert', 'break', 'class', 'continue', 
+            'def', 'del', 'elif', 'else', 'except', 'False', 'finally', 
+            'for', 'from', 'global', 'if', 'import', 'in', 'is', 
+            'lambda', 'None', 'nonlocal', 'not', 'or', 'pass', 
+            'raise', 'return', 'True', 'try', 'while', 'with', 'yield', 'self']
+
         while c < len(self.program):
             # Skip whitespaces.
             if self.program[c].isspace():
@@ -31,7 +38,7 @@ class Lexer:
                     c += 1
 
                 # Determine if the string is an identifier or a keyword.
-                if string in self.keywords:
+                if string in keywords:
                     tokens.append(('KEYWORD', string))
                 else:
                     tokens.append(('IDENTIFIER', string))
@@ -89,4 +96,47 @@ class Lexer:
             else:
                 tokens.append((ord(self.program[c]), self.program[c]))
                 c += 1
+        return tokens
+    
+
+    # Return the list of tokens (lab 5).
+    def get_tokens_with_regex(self):
+        tokens = []
+        
+        # Regular expressions for different token types
+        token_types = [
+            ('NUMBER', r'\d+(\.\d*)?'),            
+            ('STRING', r'\".*?\"|\'.*?\''),                  
+            ('KEYWORD', r'(if|else|while|for|def|return|in)(?!\w)'), 
+            ('IDENTIFIER', r'[a-zA-Z_]\w*'),                 
+            ('OPERATOR', r'[+\-*%/]'),                      
+            ('COMPARISON', r'==|!=|<=|>=|<|>'),             
+            ('ASSIGNMENT', r'='),                            
+            ('SEPARATOR', r'\(|\)|\[|\]|\{|\}|,|;|:'),
+            ('NEWLINE', r'\n'),                              
+            ('SKIP', r'[ \t]+'),                              
+            ('COMMENT', r'#.*'),                              
+            ('UNKNOWN', r'.'),                                
+        ]
+
+        # Create a pattern by joining the regular expressions for all token types
+        token_pattern = '|'.join('(?P<%s>%s)' % spec for spec in token_types)
+
+        # Compile the pattern into a regular expression object
+        regex = re.compile(token_pattern)
+
+        # Iterate over matches in the input string
+        for match in regex.finditer(self.program):
+            # Get the token type from the match group name
+            token_type = match.lastgroup
+
+            # Get the actual matched value
+            token_value = match.group(token_type)
+
+             # Add the token to the list
+            if token_type == 'UNKNOWN':
+                tokens.append((token_type, ord(token_value)))
+            elif token_type != 'SKIP' and token_type != 'NEWLINE':
+                tokens.append((token_type, token_value)) 
+            
         return tokens

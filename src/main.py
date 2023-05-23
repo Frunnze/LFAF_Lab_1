@@ -1,23 +1,61 @@
 import lexer
+from graphviz import Digraph
+import AST
+import parser_program
 
-keywords = ['and', 'as', 'assert', 'break', 'class', 'continue', 
-            'def', 'del', 'elif', 'else', 'except', 'False', 'finally', 
-            'for', 'from', 'global', 'if', 'import', 'in', 'is', 
-            'lambda', 'None', 'nonlocal', 'not', 'or', 'pass', 
-            'raise', 'return', 'True', 'try', 'while', 'with', 'yield', 'self']
+
+# Function to build a graph representation of an AST node and its children
+def build_graph(node, graph):
+    graph.node(str(id(node)), str(node))
+    for child in node.children:
+        graph.edge(str(id(node)), str(id(child)))
+        build_graph(child, graph)
+
 
 python_program = '''
-# Function that takes a list of numbers and returns their sum.
-def sum_list(numbers): # The function.
+def sum_list(numbers):
     total = 0
     for num in numbers:
-        total += num
+        total = total + num
     return total
-my_numbers = [1, 2, 3, 4, 5]
-print(sum_list(my_numbers))
 '''
 
-lexer_11 = lexer.Lexer(python_program, keywords)
-tokens = lexer_11.get_tokens()
+# Tokenize the Python program using the lexer
+lexer_11 = lexer.Lexer(python_program)
+tokens = lexer_11.get_tokens_with_regex()
+
+# Print the tokens
 for token in tokens:
     print(token)
+
+# Create an Abstract Syntax Tree (AST) from the tokens
+ast = AST.AST.create_ast(tokens)
+
+# Create a graph using the Digraph class from the graphviz library
+graph = Digraph()
+
+# Build the graph representation of the AST
+build_graph(ast, graph)
+
+# Render and view the AST graph
+graph.render('ast_graph', format='png', view=True)
+
+# Create the AST using the second method.
+AST.AST.create_ast_method_2(python_program)
+
+
+python_program = '''
+total = total + num
+'''
+
+# Tokenize the Python program using the lexer
+lexer_11 = lexer.Lexer(python_program)
+tokens = lexer_11.get_tokens_with_regex()
+
+# Print the tokens
+for token in tokens:
+    print(token)
+
+# Parse the tokens using the parser
+parser = parser_program.Parser(tokens)
+parser.parse()
