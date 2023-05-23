@@ -126,7 +126,7 @@ The second method to create the AST for the above Python program is to use the "
 
 
 #### Parser (class) program:
-As it would taken way too much time to create the entire parser for the Python programming language, I had to compromise and create a parser for simple Python statements.
+As it would take way too much time to create the entire parser for the Python programming language, I had to compromise and create a parser for simple Python statements.
 
 The parser class, would take the list of tokens to parse, current token being parsed, and the current index of the token being parsed.
 
